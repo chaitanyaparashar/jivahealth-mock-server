@@ -128,14 +128,14 @@ export const REMINDERS: any[] = [];
 
 export const NOTIFICATIONS: Record<string, any[]> = {
   user_patient1: [
-    { id: 'notif1', type: 'appointment', title: 'Appointment Tomorrow', body: 'Your appointment with Dr. Ramesh Kumar is tomorrow at 10:30 AM at Government General Hospital.', read: false, createdAt: '2026-03-06T08:00:00Z' },
+    { id: 'notif1', type: 'booking', title: 'Appointment Tomorrow', body: 'Your appointment with Dr. Ramesh Kumar is tomorrow at 10:30 AM at Government General Hospital.', read: false, createdAt: '2026-03-06T08:00:00Z' },
     { id: 'notif2', type: 'reminder', title: 'Medicine Reminder', body: 'Time to take Metformin 500mg. Please take it after meals.', read: false, createdAt: '2026-03-07T09:00:00Z' },
     { id: 'notif3', type: 'report', title: 'Lab Report Ready', body: 'Your blood test report from Apollo Diagnostics is now available. Tap to view.', read: false, createdAt: '2026-03-06T14:30:00Z' },
     { id: 'notif4', type: 'follow_up', title: 'Follow-up Due', body: 'Dr. Priya Sharma recommends a follow-up consultation within the next 7 days.', read: false, createdAt: '2026-03-05T11:00:00Z' },
     { id: 'notif5', type: 'promotion', title: 'Aarogyasri Offer', body: 'Get 80% off on your next teleconsultation using your Aarogyasri card. Valid till March 31.', read: true, createdAt: '2026-03-04T10:00:00Z' },
     { id: 'notif6', type: 'system', title: 'Profile Updated', body: 'Your health profile has been updated successfully. Keep it up to date for better care.', read: true, createdAt: '2026-03-03T16:00:00Z' },
     { id: 'notif7', type: 'reminder', title: 'Blood Pressure Check', body: 'Reminder: Check your blood pressure today and log it in your health records.', read: true, createdAt: '2026-03-03T08:00:00Z' },
-    { id: 'notif8', type: 'appointment', title: 'Appointment Confirmed', body: 'Your appointment with Dr. Anjali Reddy on March 12 at 3:00 PM has been confirmed.', read: true, createdAt: '2026-03-02T09:00:00Z' },
+    { id: 'notif8', type: 'booking', title: 'Appointment Confirmed', body: 'Your appointment with Dr. Anjali Reddy on March 12 at 3:00 PM has been confirmed.', read: true, createdAt: '2026-03-02T09:00:00Z' },
   ],
 };
 
@@ -144,6 +144,42 @@ export const SUPPORT_TICKETS: any[] = [
 ];
 
 export const EMERGENCY_EVENTS: any[] = [];
+
+export const BOOKINGS: any[] = [
+  {
+    id: 'bk_consult1', userId: 'user_patient1', type: 'consultation', status: 'confirmed',
+    patientId: 'fm1', patientName: 'Raju Naidu',
+    createdAt: '2026-03-05T09:00:00Z', updatedAt: '2026-03-05T09:00:00Z',
+    details: { doctorId: 'doc1', doctorName: 'Dr. Ramesh Kumar', specialty: 'General Physician', date: '2026-03-30', time: '10:30', slotId: 'slot_doc1_1030', complaint: 'Fever and headache', age: 42, gender: 'Male' },
+  },
+  {
+    id: 'bk_consult2', userId: 'user_patient1', type: 'consultation', status: 'completed',
+    patientId: 'fm1', patientName: 'Raju Naidu',
+    createdAt: '2026-02-14T10:00:00Z', updatedAt: '2026-02-15T12:00:00Z',
+    details: { doctorId: 'doc5', doctorName: 'Dr. Srinivas Murthy', specialty: 'Cardiologist', date: '2026-02-15', time: '11:00', slotId: 'slot_doc5_1100', complaint: 'Routine cardiac checkup', age: 42, gender: 'Male', sessionStatus: 'ended', durationSeconds: 900 },
+  },
+  {
+    id: 'bk_diag1', userId: 'user_patient1', type: 'diagnostic', status: 'report_ready',
+    patientId: 'fm1', patientName: 'Raju Naidu',
+    createdAt: '2026-03-01T08:00:00Z', updatedAt: '2026-03-01T14:00:00Z',
+    details: { testId: 'test1', testName: 'Complete Blood Count (CBC)', labId: 'lab1', labName: 'Apollo Diagnostics', date: '2026-03-01', collectionType: 'home', reportUrl: 'https://example.com/reports/cbc.pdf', reportReadyAt: '2026-03-01T14:00:00Z' },
+  },
+  {
+    id: 'bk_pharm1', userId: 'user_patient1', type: 'pharmacy', status: 'confirmed',
+    patientId: 'fm1', patientName: 'Raju Naidu',
+    createdAt: '2026-03-25T12:00:00Z', updatedAt: '2026-03-25T12:00:00Z',
+    details: {
+      items: [{ medicineId: 'med1', name: 'Paracetamol 500mg', quantity: 2, price: 30, discountedPrice: 22, total: 44 }],
+      deliveryAddress: { line1: '12-3, MG Road', city: 'Vijayawada', state: 'AP', pincode: '520010' },
+      subtotal: 44, deliveryFee: 40, total: 84,
+      estimatedDelivery: '2026-03-27',
+    },
+  },
+];
+
+export const RECENT_SEARCHES: Record<string, string[]> = {
+  user_patient1: ['fever', 'Dr. Ramesh', 'paracetamol', 'CBC test'],
+};
 
 export const ASHA_PATIENTS: any[] = [
   { id: 'ap1', ashaId: 'user_asha1', name: 'Manga Devi', age: 35, gender: 'Female', village: 'Pedapalli', phone: '9876500001', aadhaar: 'XXXX-XXXX-0001', conditions: ['Anaemia'], riskLevel: 'medium', vitals: [], lastVisit: '2026-03-01' },
